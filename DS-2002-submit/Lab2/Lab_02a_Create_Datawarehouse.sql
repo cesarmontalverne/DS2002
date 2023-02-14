@@ -112,7 +112,8 @@ CREATE TABLE `dim_suppliers` (
 
 CREATE TABLE `fact_orders`(
 -- orders
-	`order_key` int NOT NULL AUTO_INCREMENT,
+	`fact_order_key` int NOT NULL AUTO_INCREMENT,
+	`order_key` int NOT NULL,
 	`employee_key` int DEFAULT NULL,
 	`customer_key` int DEFAULT NULL,
 	`order_date` datetime DEFAULT NULL,
@@ -138,8 +139,13 @@ CREATE TABLE `fact_orders`(
 	`order_status` varchar(50) DEFAULT NULL,
 -- order details status
 	`order_details_status` varchar(50) DEFAULT NULL,
-	KEY (`order_key`),
-    KEY (`product_key`)
+    PRIMARY KEY `fact_order_key` (`fact_order_key`),
+	KEY `order_key` (`order_key`),
+    KEY `customer_key` (`customer_key`),
+    KEY `employee_key` (`employee_key`),
+    KEY `product_key` (`product_key`),
+    KEY `shipper_key` (`shipper_key`),
+    KEY `ship_zip_postal_code` (`ship_zip_postal_code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 
