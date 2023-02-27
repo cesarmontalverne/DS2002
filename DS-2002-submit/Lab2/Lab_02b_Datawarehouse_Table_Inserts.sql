@@ -195,7 +195,7 @@ SELECT `orders`.`id`,
 	`orders_status`.`status_name`,
 -- order details status
 	`order_details_status`.`status_name`
-FROM ((northwind.orders AS orders OUTER RIGHT JOIN northwind.order_details AS order_details
+FROM ((northwind.orders AS orders RIGHT JOIN northwind.order_details AS order_details
 ON orders.id=order_details.order_id) 
 INNER JOIN northwind.orders_status AS orders_status
 ON orders.status_id=orders_status.id) 
